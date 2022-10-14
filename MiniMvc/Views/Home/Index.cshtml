@@ -1,0 +1,41 @@
+﻿@model MiniMvc.FormModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Html
+
+@{
+    ViewBag.Title = "title";
+}
+
+<script src="~/js/a.js"></script>
+
+<h2>Home / Index</h2>
+
+@Html.RenderScript(BundleConfig.AB)
+
+@Html.ActionLink("Add a person", "Add", "Person", routeValues: new { controller = "Person" }, htmlAttributes: new { target = "_blank" })
+<br/>
+
+@Html.ActionLink("Go to sub", "Index", "Cow", routeValues: new { area = "Sub" })
+<br/>
+
+@functions {
+
+    void PrintName(string name)
+    {
+        <div>@name</div>
+    }
+
+}
+
+@using (Html.BeginForm(nameof(HomeController.Submit), "Home", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(o => o.Name)
+        @Html.TextBoxFor(o => o.Name)
+    </div>
+    <div>
+        @Html.LabelFor(o => o.Email)
+        @Html.TextBoxFor(o => o.Email)
+    </div>
+    <button type="submit">Submit</button>
+}
