@@ -10,12 +10,16 @@
 
 <h2>Home / Index</h2>
 
+<fieldset>
+    <legend>Demonstration of area issues</legend>
+    Here's an action link where the area is not in the path: @Html.ActionLink("Go to sub", "Index", "Cow", routeValues: new { area = "Sub" })
+    <br/>
+    Here's an url where the area is not in the path: @Url.Action("Index", "Cow", new { area = "Sub" })
+</fieldset>
+
 @Html.RenderScript(BundleConfig.AB)
 
 @Html.ActionLink("Add a person", "Add", "Person", routeValues: new { controller = "Person" }, htmlAttributes: new { target = "_blank" })
-<br/>
-
-@Html.ActionLink("Go to sub", "Index", "Cow", routeValues: new { area = "Sub" })
 <br/>
 
 @functions {
