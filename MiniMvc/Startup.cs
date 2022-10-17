@@ -64,18 +64,15 @@ namespace MiniMvc
 
             app.UseSession();
             app.UseEndpoints(endpoints =>
-            // app.UseMvc(routes =>
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
-                    name: "Default",
-                    pattern: "{controller=Home}/{action=Index}/{id:int?}"
-                    // defaults: new { area = "", controller = "Home", action = "Index", id = RouteParameter.Optional }
-                );
-                endpoints.MapControllerRoute(
                     name: "Areas",
                     pattern: "{area:exists}/{controller=Home}/{Action=Index}/{id?}"
-                    // defaults: new { area = "", controller = "Home", action = "Index", id = RouteParameter.Optional }
+                );
+                endpoints.MapControllerRoute(
+                    name: "Default",
+                    pattern: "{controller=Home}/{action=Index}/{id:int?}"
                 );
             });
         }
